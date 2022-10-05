@@ -2,6 +2,7 @@ package com.secutiry.UsuariosSeguranca.Controller;
 
 import com.secutiry.UsuariosSeguranca.ExceptionHandler.ExceptionHandlerUsuario;
 import com.secutiry.UsuariosSeguranca.Model.UsuarioModel;
+import com.secutiry.UsuariosSeguranca.Model.UsuarioResponse;
 import com.secutiry.UsuariosSeguranca.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,18 +18,19 @@ public class UsuarioController extends ExceptionHandlerUsuario {
 
     @PostMapping(path = "/usuario")
     @ResponseBody
-    public ResponseEntity<UsuarioModel> cadastrarUsuario(@RequestBody UsuarioModel usuarioModel){
+    public ResponseEntity<UsuarioResponse> cadastrarUsuario(@RequestBody UsuarioModel usuarioModel){
         return ResponseEntity.ok(usuarioService.cadastrarUsuario(usuarioModel));
     }
 
     @GetMapping(path = "/usuario")
-    public ResponseEntity<List<UsuarioModel>> buscarUsuarios(){
+    public ResponseEntity<List<UsuarioResponse>> buscarUsuarios(){
         return ResponseEntity.ok(usuarioService.buscarUsuarios());
     }
 
     @DeleteMapping(path = "/usuario/{id}")
-    public ResponseEntity<List<UsuarioModel>> deletarUsuario(Long id){
-        return ResponseEntity.ok(usuarioService.apagarUsuario(id));
+    public ResponseEntity<List<?>> deletarUsuario(Long id){
+         usuarioService.apagarUsuario(id);
+         return null;
     }
 
 }
