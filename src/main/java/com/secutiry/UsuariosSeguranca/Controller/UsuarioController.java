@@ -1,5 +1,6 @@
 package com.secutiry.UsuariosSeguranca.Controller;
 
+import com.secutiry.UsuariosSeguranca.ExceptionHandler.ExceptionHandlerUsuario;
 import com.secutiry.UsuariosSeguranca.Model.UsuarioModel;
 import com.secutiry.UsuariosSeguranca.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class UsuarioController {
+public class UsuarioController extends ExceptionHandlerUsuario {
 
     @Autowired
     private UsuarioService usuarioService;
